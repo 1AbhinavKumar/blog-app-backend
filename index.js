@@ -1,4 +1,5 @@
 const express = require("express");
+import cors from "cors";
 const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
@@ -11,6 +12,10 @@ const path = require('path')
 
 app.use(express.json());
 dotenv.config();
+app.use(cors({
+  origin: '*', 
+  credentials: true 
+}));
 
 app.use("/images",express.static(path.join(__dirname, "/images")))
 
